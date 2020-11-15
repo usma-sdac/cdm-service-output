@@ -1,1 +1,1 @@
-{"Location": {"Latitude": 41.309471667, "Altitude": 218.7, "Channel": "Location", "Longitude": -74.168116667}, "Readings": {"Detect": "none", "Level": 0, "Time": "20201115043918", "Units": "None", "ReadingID": "R000000119", "Sensor": "SIMCDM", "Channel": "Location"}}
+{"Location": {"Latitude": 41.30947, "Altitude": 218.7, "Channel": "Location", "Longitude": -74.168115}, "Readings": {"Detect": "none", "Level": 0, "Time": "20201115043931", "Units": "None", "ReadingID": "R000000120", "Sensor": "SIMCDM", "Channel": "Location"}}
