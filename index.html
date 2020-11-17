@@ -28,6 +28,34 @@
   <!-- Insert Javascript (.js) code to create the map -->
   <script>
 
+  //https://stackoverflow.com/questions/196498/how-do-i-load-the-contents-of-a-text-file-into-a-javascript-variable
+  async function loadFileAndPrintToConsole(url) {
+  try {
+      const response = await fetch(url);
+      const data = await response.text();
+
+      //Add a message
+      L.Control.textbox = L.Control.extend({
+		    onAdd: function(map) {			
+          var text = L.DomUtil.create('div');
+          text.id = "info_text";
+          text.innerHTML = "<strong>Last reading: </strong>"
+          return text;
+          },
+
+          onRemove: function(map) {
+            // Nothing to do here
+          }
+	    });
+      L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
+      L.control.textbox({ position: 'bottomleft' }).addTo(map);
+      
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+
   // Set up initial map center and zoom level
   var map = L.map('map', {
     center: [41.57, -72.69], // EDIT latitude, longitude to re-center map
@@ -35,24 +63,8 @@
     scrollWheelZoom: false
   });
 
+  loadFileAndPrintToConsole('https://threejsfundamentals.org/LICENSE');
 
-//Add a message
-L.Control.textbox = L.Control.extend({
-		onAdd: function(map) {
-			
-		var text = L.DomUtil.create('div');
-		text.id = "info_text";
-		text.innerHTML = "<strong>text here</strong>"
-		return text;
-		},
-
-		onRemove: function(map) {
-			// Nothing to do here
-		}
-	});
-
-L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
-	L.control.textbox({ position: 'bottomleft' }).addTo(map);
 
 
   /* Control panel to display map layers */
